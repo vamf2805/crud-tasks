@@ -50,7 +50,9 @@ const FormPage = () => {
 	};
 
 	const getTask = async () => {
-		const res = await fetch(`/api/tasks/${params.id}`);
+		const res = await fetch(`/api/tasks/${params.id}`,{
+			cache: 'no-store'
+		});
 		const data = await res.json();
 		setNewTask({
 			title: data.title,

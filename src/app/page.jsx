@@ -8,10 +8,10 @@ async function loadTasks(){
   return tasks
 }
 
+export const revalidate = 0; // Siempre obtiene datos frescos
 
 async function Home() {
 	const tasks = await loadTasks();
-	console.log(tasks);
 	return (
     
 		<div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
