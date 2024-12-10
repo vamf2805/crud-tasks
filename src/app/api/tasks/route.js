@@ -5,7 +5,11 @@ import Task from "@/models/Task";
 export const GET = async ()=>{
     connectDB()
     const tasks = await Task.find()
-    return NextResponse.json(tasks)
+    
+    const res = NextResponse.json(tasks)
+    res.setHeader("Cache-Control", "no-store");
+
+    return res
 }
 
 export const POST = async(request) =>{
