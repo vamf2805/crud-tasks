@@ -2,29 +2,25 @@ import connectDB from "@/utils/mongoose";
 import Task from "@/models/Task";
 import TaskCard from "@/components/TaskCard";
 
-
 async function loadTasks(){
-  connectDB()
+  await connectDB()
   const tasks = await Task.find()
   return tasks
 }
 
 
 async function Home() {
-  const tasks = await loadTasks()
-  console.log(tasks)
-  return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
-      {
-        tasks.map(task =>(
-          <TaskCard
-            task={task}
-            key={task._id}
-          />
-        ))
-      }
-    </div>
-  );
+	const tasks = await loadTasks();
+	console.log(tasks);
+	return (
+    
+		<div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
+      {console.log(tasks)}
+			{tasks.map((task) => (
+				<TaskCard task={task} key={task._id} />
+			))}
+		</div>
+	);
 }
 
-export default Home
+export default Home;
